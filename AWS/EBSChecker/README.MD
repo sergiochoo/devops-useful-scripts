@@ -1,0 +1,3 @@
+A script that checks the status of EBS volumes, and if it finds volumes in the Available status, it pushes the custom metric 'CustomMetric/EBSVolumes' to AWS CloudWatch, on the basis of which you can create an alert in Prometheus.
+Sometimes you need to make an exception, and this is implemented in this script.
+Just add the suffix "DONT_DELETE" to the Name tag of the corresponding EBS volume to skip such a volume.
