@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "ec2:DescribeVolumes",
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "ListEBSVolumes"
+        },
+        {
+            "Action": "cloudwatch:PutMetricData",
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "PutCustomCloudWatchMetric",
+            "Condition": {
+                "ForAnyValue:StringEqualsIfExists": {
+                    "cloudwatch:namespace": [
+                        "Custom/EBSVolumes"
+                    ]
+                }
+            }
+        }
+    ]
+}
