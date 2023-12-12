@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "eks:ListClusters",
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "ListEKSClusters"
+        },
+        {
+            "Action": "cloudwatch:PutMetricData",
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "PutCustomCloudWatchMetric",
+            "Condition": {
+                "ForAnyValue:StringEqualsIfExists": {
+                    "cloudwatch:namespace": [
+                        "Custom/EKSClusters"
+                    ]
+                }
+            }
+        }
+    ]
+}
